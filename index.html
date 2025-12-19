@@ -83,8 +83,17 @@ function textToAudio() {
     return;
   }
 
-  showOutput("🔊 Audio generating for:<br><b>" + text + "</b>");
+  showOutput("🔊 Speaking:<br><b>" + text + "</b>");
+
+  const speech = new SpeechSynthesisUtterance();
+  speech.text = text;
+  speech.lang = "en-US";
+  speech.rate = 1;
+  speech.pitch = 1;
+
+  window.speechSynthesis.speak(speech);
 }
+
   
 function imageToVideo() {
   showOutput("🖼️ Image to Video feature coming soon.");
