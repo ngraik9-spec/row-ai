@@ -60,6 +60,10 @@
 <textarea id="textInput" placeholder="Enter text here..."
 style="width:90%;max-width:400px;height:120px;padding:12px;border-radius:10px;"></textarea>
 <br><br>
+ <input type="file" id="imageInput" accept="image/*">
+<br><br>
+<br><br>
+<img id="preview" style="max-width:100%;display:none;border-radius:12px;">
     <button onclick="textToAudio()">📝 Text to Audio</button>
     <button onclick="imageToVideo()">🖼️ Image to Video</button>
     <button onclick="videoEdit()">🎬 Video Editing</button>
@@ -93,8 +97,17 @@ function textToAudio() {
 
   window.speechSynthesis.speak(speech);
 }
+document.getElementById("imageInput").addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
 
-  
+  const img = document.getElementById("preview");
+  img.src = URL.createObjectURL(file);
+  img.style.display = "block";
+
+  showOutput("🖼️ Image selected successfully");
+});
+
 function imageToVideo() {
   showOutput("🖼️ Image to Video feature coming soon.");
 }
