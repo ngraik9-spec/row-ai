@@ -57,6 +57,9 @@
   <header>Row AI</header>
 
   <div class="container">
+<textarea id="textInput" placeholder="Enter text here..."
+style="width:90%;max-width:400px;height:120px;padding:12px;border-radius:10px;"></textarea>
+<br><br>
     <button onclick="textToAudio()">📝 Text to Audio</button>
     <button onclick="imageToVideo()">🖼️ Image to Video</button>
     <button onclick="videoEdit()">🎬 Video Editing</button>
@@ -73,9 +76,16 @@ function showOutput(text) {
 }
 
 function textToAudio() {
-  showOutput("🎤 Text to Audio feature coming soon (API connect karna hoga).");
-}
+  const text = document.getElementById("textInput").value;
 
+  if (text.trim() === "") {
+    alert("Please enter some text");
+    return;
+  }
+
+  showOutput("🔊 Audio generating for:<br><b>" + text + "</b>");
+}
+  
 function imageToVideo() {
   showOutput("🖼️ Image to Video feature coming soon.");
 }
